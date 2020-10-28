@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
-
+const password = 'climbing';
+const dbname = 'crux_api_n'
 mongoose.connect(
-    "mongodb+srv://lysakowski-art:climbing@cluster0.m2d63.mongodb.net/crux_api_n?retryWrites=true&w=majority",
+    `mongodb+srv://lysakowski-art:${password}@cluster0.m2d63.mongodb.net/${dbname}?retryWrites=true&w=majority`,
     { useNewUrlParser: true, useUnifiedTopology: true },
     (error) => {
       if (!error) {
@@ -10,6 +11,4 @@ mongoose.connect(
         console.log("sth went wrong");
       }
     }
-  );
-  
-  const Products = require("./db");
+  );                                                                                                                                                                                                 

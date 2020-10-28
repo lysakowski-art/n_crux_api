@@ -3,11 +3,19 @@ const cors = require('cors');
 const bodyParser = require('body-parser')
 const session = require('express-session')
 const config = require('./config')
+const connection = require('./connection')
+
+// routes
+const getPage = require('./routes/getPage')
+const getRegions = require('./routes/getRegions')
+// const getRoutes = require('./routes/getRoutes')
+const postRoute = require('./routes/postRoute')
 
 const app = express();
 
-const { PORT_FRONT = "http://127.0.0.1:3000", PORT = 8000, MONGO_DB="mongodb+srv://lysakowski-art:climbing@cluster0.m2d63.mongodb.net/<dbname>?retryWrites=true&w=majority" } = process.env;
-const whitelist = [process.env.PORT_FRONT, process.env.MONGO_DB]
+const { PORT_FRONT = "http://127.0.0.1:3000", PORT = 8000, MONGO_DB="mongodb+srv://lysakowski-art:climbing@cluster0.m2d63.mongodb.net/crux_api_n?retryWrites=true&w=majority" } = process.env;
+const whitelist = [PORT_FRONT, MONGO_DB]
+
 const corsOptions = {
     credentials: true,
     origin: (origin, callback) => {
@@ -21,8 +29,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(session(config));
 
-app.get('/',(req,res,next)=>{
-    res.json({msg: "go fuck yourself"})
-})
 
-app.listen(PORT, ()=>console.log(`server works on ${PORT}`))
+
+//page
+app.get('/pages/:pageId', getPage);
+//routes
+// app.get('/routes/:rank/:region', getRoutes);
+app.post('/routes', postRoute);
+//regions
+app.get('/regions', getRegions)
+
+app.listen(PORT, ()=>console.log(`server works on ${PORT}`));
