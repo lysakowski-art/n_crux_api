@@ -1,20 +1,20 @@
 const express = require('express');
 const cors = require('cors');
-const bodyParser = require('body-parser')
-const session = require('express-session')
-const config = require('./config')
-const connection = require('./connection')
+const bodyParser = require('body-parser');
+const session = require('express-session');
+const config = require('./config');
+const connection = require('./connection');
 
 // routes
-const getPage = require('./routes/getPage')
-const getRegions = require('./routes/getRegions')
-// const getRoutes = require('./routes/getRoutes')
-const postRoute = require('./routes/postRoute')
+const getPage = require('./paths/getPage');
+const getRegions = require('./paths/getRegions');
+// const getRoutes = require('./paths/getRoutes');
+const postRoute = require('./paths/postRoute');
 
-const registerUser = require('./routes/registerUser')
-const loginUser =require('./routes/loginUser')
-
-
+const registerUser = require('./paths/registerUser');
+const loginUser = require('./paths/loginUser')
+const logoutUser = require('./paths/logoutUser');
+const checkIsUserLogged = require('./paths/checkIsUserLogged')
 
 const app = express();
 
@@ -29,21 +29,28 @@ const corsOptions = {
       }
 }
 
-app.use(cors(corsOptions))
+app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(session(config));
 
 
 
-//page
+//pages
 app.get('/pages/:pageId', getPage);
+
 //routes
-// app.get('/routes/:rank/:region', getRoutes);
+// app.get('/routes/:rank/:region', getRoutes); 
 app.post('/routes', postRoute);
+
 //regions
-app.get('/regions', getRegions)
+app.get('/regions', getRegions);
+
 //users
-app.post('/register', registerUser)
-app.post('/auth', loginUser)
-app.listen(PORT, ()=>console.log(`server works on ${PORT}`));
+app.post('/register', registerUser);
+app.post('/auth', loginUser);
+app.get('/auth', logoutUser);
+app.get('/check', checkIsUserLogged)
+
+
+app.listen(PORT, ()=>console.log(`server works on PORT:${PORT}`));
