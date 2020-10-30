@@ -14,13 +14,19 @@ module.exports =(req,res) =>{
                     password: hashedPassword,
                     user_type,
                 })
-                res.send(true)
+                res.status(201).send({
+                    message: "User created succesfully!"
+                })
             } else {
-                res.send(false)
+                res.status(400).send({
+                    message: `User with email: ${email_adress} already exists.`
+                })
             }
         })
     } else {
-        res.send(false)
+        res.status(500).send({
+            message: "Something is missing"
+        })
     }
 }
 

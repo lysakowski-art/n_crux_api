@@ -2,18 +2,34 @@ const RouteModel = require('../../schema/routes')
 
 module.exports =(req,res) =>{
     const {route_title, route_author, route_rank, route_type, region, placemant_and_belay_anchor, route_description} = req.body;
-    if(route_title && route_rank && region){
-        RouteModel.Route.create({
-            route_title,
-            route_author,
-            route_rank,
-            route_type,
-            region,
-            placemant_and_belay_anchor,
-            route_description
-        })
-        res.send(true)
-    } else {
-        res.send(false)
-    }
+    RouteModel.Route.find({route_title, region}, (err, route) => {
+        if(!route){
+            if(route_title && route_rank && region){
+                RouteModel.Route.create({
+                    route_title,
+                    route_author,
+                    route_rank,
+                    route_type,
+                    region,
+                    placemant_and_belay_anchor,
+                    route_description
+                })
+                res.status(201).send({
+                    message: `Route ${route_title} created succsesfuly!`
+                })
+            } else {
+                res.status(500).send({
+                    message: `Something went wrong. Error message: ${err}`
+                })
+            }
+        } else {
+            res.status(409).send({
+                message: `Route ${route_title} in ${region} exists and cannot be added.`
+            })
+        }
+    })
 }
+
+
+
+// const {route_title, route_author, route_rank, route_type, region, placemant_and_belay_anchor, route_description} = req.body;

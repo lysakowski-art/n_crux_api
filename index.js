@@ -8,8 +8,10 @@ const connection = require("./connection");
 // routes
 const getPage = require("./paths/getPage");
 const getRegions = require("./paths/getRegions");
-// const getRoutes = require('./paths/getRoutes');
+
+const getRoutes = require("./paths/getRoutes");
 const createRoute = require("./paths/createRoute");
+const deleteRoute = require("./paths/deleteRoute")
 
 const createUser = require("./paths/createUser");
 const loginUser = require("./paths/loginUser");
@@ -39,11 +41,12 @@ app.use(bodyParser.json());
 app.use(session(config));
 
 //pages
-app.get("/pages/:pageId", getPage);
+app.get("/pages/:id", getPage);
 
 //routes
-// app.get('/routes/:rank/:region', getRoutes);
+app.get("/routes/:rank/:region", getRoutes);
 app.post("/routes", createRoute);
+app.delete("/routes/:id", deleteRoute)
 
 //regions
 app.get("/regions", getRegions);

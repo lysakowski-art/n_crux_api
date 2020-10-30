@@ -1,12 +1,16 @@
 const RegionsModel = require('../../schema/regions')
 module.exports = (req,res) => {
-    // console.log("tu dochodzie")
     RegionsModel.Region.find({},(err,regions)=>{
         if(err) {
-            console.log(err)
+            res.status(500).send({
+                message: `Something went wrong. Error message: ${err}`
+            })
+        } else if (!regions){
+            res.status(404).send({
+                message: `There is no regions in DB`
+            })
         } else {
-            // console.log(regions)
-            res.send(regions)
+            res.status(200).send(regions)
         }
     })
 }

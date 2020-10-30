@@ -5,34 +5,60 @@ module.exports = (req,res) => {
     if(route_rank && region) {
         RouteModel.Route.findMany({route_rank, region},(err, routes)=>{
             if (err){
-                console.log(err)
+                res.status(500).send({
+                    message: `Something wen wrong. Error message: ${err}`
+                })
+            } else if (!routes) {
+                res.status(404).send({
+                    message: `There is no routes suits to conditions such as route rank: ${route_rank} and region: ${region}.`
+                })
             } else {
-                res.send(routes)
+                res.status(200).send(routes)
             }
         })
     }else if(route_rank === 0 && region === "random"){
         RouteModel.Route.findMany({},(err, routes)=>{
             if (err){
-                console.log(err)
+                res.status(500).send({
+                    message: `Something wen wrong. Error message: ${err}`
+                })
+            } else if (!routes) {
+                res.status(404).send({
+                    message: `There is no routes store in database.`
+                })
             } else {
-                res.send(routes)
+                res.status(200).send(routes)
             }
         })
     } else if (route_rank && region === "random") {
         RouteModel.Route.findMany({route_rank},(err, routes)=>{
             if (err){
-                console.log(err)
+                res.status(500).send({
+                    message: `Something wen wrong. Error message: ${err}`
+                })
+            } else if (!routes) {
+                res.status(404).send({
+                    message: `There is no routes suits to condition such as route rank: ${route_rank}.`
+                })
             } else {
-                res.send(routes)
+                res.status(200).send(routes)
             }
         })
     }  else if (route_rank === 0 && region) {
         RouteModel.Route.findMany({region},(err, routes)=>{
             if (err){
-                console.log(err)
+                res.status(500).send({
+                    message: `Something wen wrong. Error message: ${err}`
+                })
+            } else if (!routes) {
+                res.status(404).send({
+                    message: `There is no routes suits to condition such as region: ${region}.`
+                })
             } else {
-                res.send(routes)
+                res.status(200).send(routes)
             }
         })
-    } else res.send(false)
+    } else res.status(404).send({
+        message: "Something went wrong."
+    })
 }
