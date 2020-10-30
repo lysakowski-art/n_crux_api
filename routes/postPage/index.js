@@ -1,6 +1,5 @@
 // !inserting pages!
 const PageModel = require('../../schema/page')
-const Page = require('./schema/page')
 module.exports = (req, res)=>{
     const {page_title, page_content, language} = req.body
     if(page_title && language && page_content) {
