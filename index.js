@@ -5,18 +5,23 @@ const session = require("express-session");
 const config = require("./config");
 const connection = require("./connection");
 
-// routes
+// --------------------------------PATHS--------------------------------
+// pages
 const getPage = require("./paths/getPage");
+// regions
+const createRegion = require('./paths/createRegion');
 const getRegions = require("./paths/getRegions");
-
-const getRoutes = require("./paths/getRoutes");
+const deleteRegion = require('./paths/deleteRegion');
+// routes
 const createRoute = require("./paths/createRoute");
-const deleteRoute = require("./paths/deleteRoute")
-
-const createUser = require("./paths/createUser");
+const deleteRoute = require("./paths/deleteRoute");
+const getRoutes = require("./paths/getRoutes");
+// users
+const checkIsUserLogged = require("./paths/checkIsUserLogged");
+const createUser = require("./paths/createUser"); 
 const loginUser = require("./paths/loginUser");
 const logoutUser = require("./paths/logoutUser");
-const checkIsUserLogged = require("./paths/checkIsUserLogged");
+// ---------------------------------------------------------------------
 
 const app = express();
 
@@ -46,10 +51,12 @@ app.get("/pages/:id", getPage);
 //routes
 app.get("/routes/:rank/:region", getRoutes);
 app.post("/routes", createRoute);
-app.delete("/routes/:id", deleteRoute)
+app.delete("/routes/:id", deleteRoute);
 
 //regions
 app.get("/regions", getRegions);
+app.post("/regions", createRegion);
+app.delete("/regions/:id", deleteRegion);
 
 //users
 app.post("/create_user", createUser);

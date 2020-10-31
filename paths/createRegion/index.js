@@ -3,7 +3,8 @@ const RegionModel = require('../../schema/regions')
 module.exports = (req,res) => {
     const {region_name, group_of_regions} = req.body;
     RegionModel.Region.find({region_name, group_of_regions}, (err, region) => {
-        if(!region){
+        console.log(region);
+        if(region.length === 0){
             RegionModel.Region.create({
                 region_name,
                 group_of_regions
