@@ -62,6 +62,6 @@ app.delete("/regions/:id", deleteRegion);
 app.post("/create_user", createUser);
 app.post("/auth", loginUser);
 app.get("/auth", logoutUser);
-app.get("/check_user", checkIsUserLogged);
+app.get("/check_session", checkIsUserLogged);
 
 app.listen(PORT, () => console.log(`server works on PORT:${PORT}`));

@@ -21,7 +21,8 @@ module.exports = (req, res) => {
               typeOfUser: user.user_type,
             };
             res.status(201).send({
-              message: "User logged in succsesfuly!"
+              message: "User logged in succsesfuly!",
+              user_name: user.user_name
             });
           } else {
               res.status(409).send({
