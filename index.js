@@ -27,10 +27,11 @@ const app = express();
 
 const {
   PORT_FRONT = "http://127.0.0.1:3000",
+  PORT_FRONT_LOCALHOST = "http://localhost:3000",
   PORT = 8000,
   MONGO_DB = "mongodb+srv://lysakowski-art:climbing@cluster0.m2d63.mongodb.net/crux_api_n?retryWrites=true&w=majority",
 } = process.env;
-const whitelist = [PORT_FRONT, MONGO_DB];
+const whitelist = [PORT_FRONT, MONGO_DB, PORT_FRONT_LOCALHOST];
 
 const corsOptions = {
   credentials: true,
