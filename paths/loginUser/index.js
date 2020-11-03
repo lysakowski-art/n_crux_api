@@ -15,16 +15,15 @@ module.exports = (req, res) => {
           })
         } else {
           if (bcrypt.compareSync(password, user.password)) {
-            req.session.loggedIn = {
+            req.session.sessionData = {
               loggedIn: true,
               user_name: user.user_name,
               typeOfUser: user.user_type,
-              
             };
             res.status(201).send({
               message: "User logged in succsesfuly!",
               user_name: user.user_name,
-              session: req.session.loggedIn
+              session: req.session.sessionData
             });
           } else {
               res.status(409).send({

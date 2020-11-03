@@ -9,7 +9,7 @@ const store = new MongoDBStore({
 const {
     SESS_NAME = "sid" /*session ID */,
     SESS_SECRET = "shhhh",
-    SESS_LIFETIME = 1000 * 60 * 10,
+    SESS_LIFETIME = 1000 * 60 * 200,
 } = process.env
 
 module.exports = {

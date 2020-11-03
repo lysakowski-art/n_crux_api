@@ -1,5 +1,5 @@
 module.exports = (req, res) => {
-  if (req.session.loggedIn) {
+  if (req.session.sessionData) {
     req.session.destroy((err) => {
       if (err) {
         console.log(err);
