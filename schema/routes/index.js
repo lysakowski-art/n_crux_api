@@ -8,7 +8,8 @@ const RouteSchema = new mongoose.Schema(
       route_type: Boolean,
       region: String,
       placemant_and_belay_anchor: String,
-      route_description: String
+      route_description: String,
+      user_name: String
   },
   {
     collection: "routes",
