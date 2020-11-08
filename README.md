@@ -2,7 +2,7 @@
 ## PROJECT DESCRIPTION
 
 ### Purpose
-Crux of Poland app enable to the recording and organization of polish climbing routes by the members of comunity.
+Crux of Poland app enables to the recording and organization of polish climbing routes by the members of comunity.
 
 ### Features
 
