@@ -36,6 +36,8 @@ Node.js v 12.16.1 or higher
 ### Steps
 1. `git clone https://github.com/lysakowski-art/n_crux_api.git`
 
+2. `cd n_crux_api`
+
 2. `npm i`
 
 3. `npm start`
