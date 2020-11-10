@@ -13,7 +13,8 @@ module.exports =(req,res) =>{
                     region,
                     placemant_and_belay_anchor,
                     route_description,
-                    user_name
+                    user_name,
+                    active: true
                 })
                 res.status(201).send({
                     message: `Route ${route_title} created succsesfuly!`
