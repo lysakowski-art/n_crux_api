@@ -16,6 +16,7 @@ const deleteRegion = require('./paths/deleteRegion');
 const createRoute = require("./paths/createRoute");
 const deleteRoute = require("./paths/deleteRoute");
 const getRoutes = require("./paths/getRoutes");
+const updateRoute = require("./paths/updateRoute")
 // users
 const checkIsUserLogged = require("./paths/checkIsUserLogged");
 const createUser = require("./paths/createUser"); 
@@ -53,6 +54,7 @@ app.get("/pages/:id", getPage);
 app.get("/routes/:rank/:region", getRoutes);
 app.post("/routes", createRoute);
 app.delete("/routes/:id", deleteRoute);
+app.put("/routes/:id", updateRoute)
 
 //regions
 app.get("/regions", getRegions);

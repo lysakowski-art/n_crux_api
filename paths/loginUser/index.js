@@ -19,11 +19,13 @@ module.exports = (req, res) => {
               loggedIn: true,
               user_name: user.user_name,
               user_type: user.user_type,
+              user_id: user.user_id
             };
             res.status(201).send({
               message: "User logged in succsesfuly!",
               user_name: user.user_name,
               user_type: user.user_type,
+              user_id: user.user_id,
               session: req.session.sessionData
             });
           } else {
