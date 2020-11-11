@@ -54,12 +54,12 @@ app.get("/pages/:id", getPage);
 app.get("/routes/:rank/:region", getRoutes);
 app.post("/routes", createRoute);
 app.delete("/routes/:id", deleteRoute);
-app.put("/routes/:id", updateRoute)
+app.put("/routes/:id/:param/:value", updateRoute)
 
 //regions
 app.get("/regions", getRegions);
 app.post("/regions", createRegion);
-app.delete("/regions/:id", deleteRegion);
+app.delete("/regions/:id/", deleteRegion);
 
 //users
 app.post("/create_user", createUser);
