@@ -12,10 +12,15 @@ Crux of Poland app enables to the recording and organization of polish climbing 
 - session checking
 - creating routes
 - connecting to MongoDB(delivered by Atlas)
+- deleting routes
+- updating routes
 
 in progress...
-- deleting routes by moderators
-- updating routes by moderators
+- contact mail sender(sendgrid)
+- password reset
+- deleting users
+- updating users
+- storage for avatars
 
 ### NPM-packages I have chosen:
 * bcrypt
