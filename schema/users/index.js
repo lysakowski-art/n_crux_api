@@ -6,6 +6,14 @@ const UserSchema = new mongoose.Schema(
     email_adress: String,
     password: String,
     user_type: String,
+    resetPasswordToken: {
+      type: String,
+      required: false
+    },
+    resetPasswordExpires: {
+      type: Date,
+      required: false
+    }
   },
   {
     collection: "users",

@@ -1,16 +1,18 @@
 const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
-
-const store = new MongoDBStore({
-    uri: "mongodb+srv://lysakowski-art:climbing@cluster0.m2d63.mongodb.net/crux_api_n?retryWrites=true&w=majority",
-    collection: "mySessions",
-  });
+// require('dotenv')
 
 const {
-    SESS_NAME = "sid" /*session ID */,
-    SESS_SECRET = "shhhh",
-    SESS_LIFETIME = 1000 * 60 * 200,
+  MONGO_DB = "mongodb+srv://lysakowski-art:climbing@cluster0.m2d63.mongodb.net/crux_api_n?retryWrites=true&w=majority",
+  SESS_NAME = "sid" /*session ID */,
+  SESS_SECRET = "shhhh",
+  SESS_LIFETIME = 1000 * 60 * 200,
 } = process.env
+
+const store = new MongoDBStore({
+    uri: MONGO_DB,
+    collection: "userSessions",
+  });
 
 module.exports = {
     name: SESS_NAME,

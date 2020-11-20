@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 const config = require("./config");
 const connection = require("./connection");
-
+require('dotenv').config({path: __dirname + '/.env'})
 // --------------------------------PATHS--------------------------------
 // pages
 const getPage = require("./paths/getPage");
@@ -27,10 +27,10 @@ const logoutUser = require("./paths/logoutUser");
 const app = express();
 
 const {
-  PORT_FRONT = "http://127.0.0.1:3000",
-  PORT_FRONT_LOCALHOST = "http://localhost:3000",
-  PORT = 8000,
-  MONGO_DB = "mongodb+srv://lysakowski-art:climbing@cluster0.m2d63.mongodb.net/crux_api_n?retryWrites=true&w=majority",
+  PORT_FRONT,
+  PORT_FRONT_LOCALHOST,
+  PORT,
+  MONGO_DB,
 } = process.env;
 const whitelist = [PORT_FRONT, MONGO_DB, PORT_FRONT_LOCALHOST];
 
@@ -54,7 +54,7 @@ app.get("/pages/:id", getPage);
 app.get("/routes/:rank/:region", getRoutes);
 app.post("/routes", createRoute);
 app.delete("/routes/:id", deleteRoute);
-app.put("/routes/:id/:param/:value", updateRoute)
+app.put("/routes/:id", updateRoute)
 
 //regions
 app.get("/regions", getRegions);
