@@ -11,4 +11,5 @@ mongoose.connect(
         console.log("sth went wrong");
       }
     }
-  );                                                                                                                                                                                                 
+  );
+  mongoose.set('useCreateIndex', true)                                                                                                                                                                                                 

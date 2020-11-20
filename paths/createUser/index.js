@@ -8,7 +8,7 @@ module.exports =(req,res) =>{
     if(user_name && email_adress && password && user_type){
         UserModel.User.findOne({email_adress},(err, user)=>{
             if(!user){
-                UserModel.User.create({
+                UserModel.User.createOne({
                     user_name,
                     email_adress,
                     password: hashedPassword,

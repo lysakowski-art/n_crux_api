@@ -1,7 +1,7 @@
 const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
 // require('dotenv')
-
+// console.log()
 const {
   MONGO_DB = "mongodb+srv://lysakowski-art:climbing@cluster0.m2d63.mongodb.net/crux_api_n?retryWrites=true&w=majority",
   SESS_NAME = "sid" /*session ID */,
