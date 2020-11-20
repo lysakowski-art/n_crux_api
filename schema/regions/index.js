@@ -6,6 +6,9 @@ const RegionSchema = new mongoose.Schema(
     group_of_regions: String,
   },
   {
+    timestamps: true
+  },
+  {
     collection: "regions",
   }
 );
