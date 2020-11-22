@@ -2,30 +2,35 @@ const UserModel = require('../../schema/users')
 const bcrypt = require('bcrypt');
 
 module.exports = (req, res) => {
-    const { email_adress, password } = req.body;
-    if (email_adress && password) {
-      UserModel.User.findOne({ email_adress }, (err, user) => {
+    const { emailAdress, password } = req.body;
+    if (emailAdress && password) {
+      // console.log( emailAdress, password )
+      UserModel.User.findOne({ emailAdress }, (err, user) => {
         if (err) {  
           res.status(500).send({
             message: `Something went wrong. Error message: ${err}`
           })
+        } else if (!user.active) {
+          res.status(406).send({
+            message: `User ${user.userName} is not activated`
+          })
         } else if (!user) {
           res.status(404).send({
-            message: `There is no User registered with e-mail: ${email_adress}.`
+            message: `There is no User registered with e-mail: ${emailAdress}.`
           })
         } else {
           if (bcrypt.compareSync(password, user.password)) {
             req.session.sessionData = {
               loggedIn: true,
-              user_name: user.user_name,
-              user_type: user.user_type,
-              user_id: user.user_id
+              userName: user.userName,
+              userType: user.userType,
+              userId: user.userId
             };
             res.status(201).send({
               message: "User logged in succsesfuly!",
-              user_name: user.user_name,
-              user_type: user.user_type,
-              user_id: user.user_id,
+              userName: user.userName,
+              userType: user.userType,
+              userId: user.userId,
               session: req.session.sessionData
             });
           } else {

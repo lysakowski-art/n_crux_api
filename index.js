@@ -22,6 +22,7 @@ const checkIsUserLogged = require("./paths/checkIsUserLogged");
 const createUser = require("./paths/createUser"); 
 const loginUser = require("./paths/loginUser");
 const logoutUser = require("./paths/logoutUser");
+const confirmAccount = require("./paths/confirmAccount")
 // ---------------------------------------------------------------------
 
 const app = express();
@@ -66,5 +67,6 @@ app.post("/create_user", createUser);
 app.post("/auth", loginUser);
 app.get("/auth", logoutUser);
 app.get("/check_session", checkIsUserLogged);
+app.get('/confirmation/:emailAdress/:token',confirmAccount)
 
 app.listen(PORT, () => console.log(`server works on PORT:${PORT}`));

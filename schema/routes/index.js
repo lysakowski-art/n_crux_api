@@ -14,9 +14,6 @@ const RouteSchema = new mongoose.Schema(
       active: Boolean
   },
   {
-    timestamps: true
-  },
-  {
     collection: "routes",
   }
   );

@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 
 const RegionSchema = new mongoose.Schema(
   {
-    region_name: String,
-    group_of_regions: String,
+    regionName: String,
+    groupOfRegions: String,
   },
   {
     collection: "regions",

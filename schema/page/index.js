@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 
 const PageSchema = new mongoose.Schema(
   {
-    page_title: String,
-    page_content: String,
+    title: String,
+    content: String,
     language: Boolean
   },
   {
