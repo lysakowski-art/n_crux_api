@@ -1,9 +1,9 @@
 const PagesModel = require('../../schema/page')
 module.exports = (req,res) => {
     const {id} = req.params
-    console.log(id)
-    if (id){
-        PagesModel.Page.findById(id)
+    const {Page} = PagesModel
+    if (id) {
+        Page.findById(id)
         .then(page=>{
             console.log(page)
             if(!page){

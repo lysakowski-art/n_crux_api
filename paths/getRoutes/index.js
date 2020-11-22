@@ -3,8 +3,9 @@ const RouteModel = require('../../schema/routes')
 module.exports = (req,res) => {
     const {rank, region} = req.params
     let route_rank = parseInt(rank)
+    const {Route} = RouteModel
     if(route_rank !== 0 && region !== "random") {
-        RouteModel.Route.find({route_rank, region},(err, routes)=>{
+        Route.find({route_rank, region},(err, routes)=>{
             if (err){
                 res.status(500).send({
                     message: `Something wen wrong. Error message: ${err}`
@@ -18,7 +19,7 @@ module.exports = (req,res) => {
             }
         })
     }else if(route_rank === 0 && region === "random"){
-        RouteModel.Route.find({},(err, routes)=>{
+        Route.find({},(err, routes)=>{
             if (err){
                 res.status(500).send({
                     message: `Something wen wrong. Error message: ${err}`
@@ -32,7 +33,7 @@ module.exports = (req,res) => {
             }
         })
     } else if (route_rank !== 0 && region ==="random") {
-        RouteModel.Route.find({route_rank},(err, routes)=>{
+        Route.find({route_rank},(err, routes)=>{
             if (err){
                 res.status(500).send({
                     message: `Something wen wrong. Error message: ${err}`
@@ -46,7 +47,7 @@ module.exports = (req,res) => {
             }
         })
     }  else if (region !== "random" && route_rank === 0) {
-        RouteModel.Route.find({region},(err, routes)=>{
+        Route.find({region},(err, routes)=>{
             if (err){
                 res.status(500).send({
                     message: `Something wen wrong. Error message: ${err}`

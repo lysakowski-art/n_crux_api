@@ -3,9 +3,9 @@ const bcrypt = require('bcrypt');
 
 module.exports = (req, res) => {
     const { emailAdress, password } = req.body;
+    const {User} = UserModel
     if (emailAdress && password) {
-      // console.log( emailAdress, password )
-      UserModel.User.findOne({ emailAdress }, (err, user) => {
+      User.findOne({ emailAdress }, (err, user) => {
         if (err) {  
           res.status(500).send({
             message: `Something went wrong. Error message: ${err}`

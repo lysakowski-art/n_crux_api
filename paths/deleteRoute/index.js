@@ -2,7 +2,8 @@ const RouteModel = require('../../schema/routes');
 
 module.exports = (req,res)=>{
     const {id} = req.params;
-    RouteModel.Route.findByIdAndRemove(id)
+    const {Route} = RouteModel
+    Route.findByIdAndRemove(id)
     .then(route => {
         if(!route){
             res.status(404).send({

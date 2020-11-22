@@ -1,6 +1,8 @@
 const RegionsModel = require('../../schema/regions')
 module.exports = (req,res) => {
-    RegionsModel.Region.find({},(err,regions)=>{
+    const {Region} = RegionsModel
+    
+    Region.find({},(err,regions)=>{
         if(err) {
             res.status(500).send({
                 message: `Something went wrong. Error message: ${err}`

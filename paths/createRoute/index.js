@@ -2,10 +2,11 @@ const RouteModel = require('../../schema/routes')
 
 module.exports =(req,res) =>{
     const {route_title, route_author, route_rank, route_type, region, placemant_and_belay_anchor, route_description, user_name, user_id} = req.body;
-    RouteModel.Route.find({route_title, region}, (err, route) => {
+    const {Route} = RouteModel
+    Route.find({route_title, region}, (err, route) => {
         if(route.length === 0){
             if(route_title && route_rank && region){
-                RouteModel.Route.create({
+                Route.create({
                     route_title,
                     route_author,
                     route_rank,

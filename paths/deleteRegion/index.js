@@ -2,7 +2,8 @@ const RegionModel = require('../../schema/regions');
 
 module.exports = (req,res)=>{
     const {id} = req.params;
-    RegionModel.Region.findByIdAndRemove(id)
+    const {Region} = RegionModel
+    Region.findByIdAndRemove(id)
     .then(region => {
         if(!region){
             res.status(404).send({

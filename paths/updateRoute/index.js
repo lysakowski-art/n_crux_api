@@ -2,14 +2,14 @@ const RoutesModel = require("../../schema/routes")
 
 module.exports = (req,res) => {
   const {id} = req.params;
-  // console.log(req.body)
+  const {Route} =RouteModel
   if (!req.body) {
     return res.status(400).send({
       message: "Data to update can not be empty!"
     });
   }
 
-  RoutesModel.Route.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+  Route.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
   .then(data => {
       if (!data) {
         res.status(404).send({
