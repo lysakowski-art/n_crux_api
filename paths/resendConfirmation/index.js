@@ -19,7 +19,7 @@ module.exports = (req,res,next) =>{
                   return res.status(500).send({msg:err.message});
                 }
                 const mailOptions = {
-                    from: 'callmeafter17@wp.pl',
+                    from: 'no-reply@cruxofpoland.pl',
                     to: emailAdress,
                     subject: "Account veriffication Crux of Poland",
                     // text: 'Hello '+ user.userName +',\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/confirmation\/' + user.emailAdress + '\/' + token.token + '\n\nThank You!\n'
