@@ -2,8 +2,6 @@ const UserModel = require('../../schema/users')
 const TokenModel = require('../../schema/tokens')
 const bcrypt = require("bcrypt");
 const crypto = require('crypto');
-const nodemailer = require("nodemailer");
-const nodemailerSendgrid = require('nodemailer-sendgrid');
 const sgMail = require("@sendgrid/mail")
 
 module.exports =(req,res) =>{

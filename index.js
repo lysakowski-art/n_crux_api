@@ -22,7 +22,8 @@ const checkIsUserLogged = require("./paths/checkIsUserLogged");
 const createUser = require("./paths/createUser"); 
 const loginUser = require("./paths/loginUser");
 const logoutUser = require("./paths/logoutUser");
-const confirmAccount = require("./paths/confirmAccount")
+const confirmAccount = require("./paths/confirmAccount");
+const resendConfirmation = require("./paths/resendConfirmation");
 // ---------------------------------------------------------------------
 
 const app = express();
@@ -68,5 +69,6 @@ app.post("/auth", loginUser);
 app.get("/auth", logoutUser);
 app.get("/check_session", checkIsUserLogged);
 app.get('/confirmation/:emailAdress/:token',confirmAccount)
+app.get('/resend_confirmation', resendConfirmation)
 
 app.listen(PORT, () => console.log(`server works on PORT:${PORT}`));
