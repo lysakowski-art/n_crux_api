@@ -7,11 +7,12 @@ Crux of Poland app enables to the recording and organization of polish climbing 
 ### Features
 
 - creating user
+- user's account verification via Sendgrid
 - deleting user
 - user authenticate
 - session checking
 - creating routes
-- connecting to MongoDB(delivered by Atlas)
+- connected to MongoDB(delivered by Atlas)
 - deleting routes
 - updating routes
 
@@ -28,9 +29,12 @@ in progress...
 * connect-mongo
 * connect-mongodb-session
 * cors
+* crypto
+* dotenv
 * express
 * express-session
 * mongoose
+* @sendgrid/mail
 
 ## Requirements
 
