@@ -8,6 +8,8 @@ require('dotenv').config({path: __dirname + '/.env'})
 // --------------------------------PATHS--------------------------------
 // pages
 const getPage = require("./paths/getPage");
+// contact
+const contactMail = require("./paths/contactMail")
 // regions
 const createRegion = require('./paths/createRegion');
 const getRegions = require("./paths/getRegions");
@@ -51,6 +53,9 @@ app.use(session(config));
 
 //pages
 app.get("/pages/:id", getPage);
+
+// contact
+app.post("/contact", contactMail);
 
 //routes
 app.get("/routes/:rank/:region", getRoutes);
