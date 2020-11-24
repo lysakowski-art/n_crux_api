@@ -5,7 +5,7 @@ const UserSchema = new mongoose.Schema(
     userName: {
       type: String,
       required: false,
-      default: "stranger"
+      default: "stranger",
     },
     emailAdress: {
       type: String,
@@ -23,19 +23,19 @@ const UserSchema = new mongoose.Schema(
     active: {
       type: Boolean,
       required: true,
-      default: false
+      default: false,
     },
     resetPasswordToken: {
       type: String,
-      required: false
+      required: false,
     },
     resetPasswordExpires: {
       type: Date,
-      required: false
-    }
+      required: false,
+    },
   },
   {
-    timestamps: true
+    timestamps: true,
   },
   {
     collection: "users",

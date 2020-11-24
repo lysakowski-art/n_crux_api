@@ -3,7 +3,7 @@ module.exports = (req, res) => {
     res.status(200).send(req.session.sessionData);
   } else {
     res.status(400).send({
-      message: "No session"
+      message: "No session",
     });
   }
 };

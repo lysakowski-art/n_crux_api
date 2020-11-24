@@ -4,7 +4,7 @@ const PageSchema = new mongoose.Schema(
   {
     title: String,
     content: String,
-    language: Boolean
+    language: Boolean,
   },
   {
     collection: "pages",
